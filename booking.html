@@ -33,19 +33,19 @@
             })
            
             //localStorage.setItem(obj.email,JSON.stringify(obj))
-            //showonscreen(obj)
+            showonscreen(obj)
         }
 
         window.addEventListener("DOMContentLoaded", () =>{
-            const local=localStorage;
-            const localkey=Object.keys(local);
-            for(var i=0;i<localkey.length;i++){
-                const key=localkey[i];
-                const userdetailstring=local[key];
-                const userobj=JSON.parse(userdetailstring);
-                showonscreen(userobj)
-            }
-
+            axios.get("https://crudcrud.com/api/ccf37a2ade7a4132b82ac1875bfbffa7/appiont")
+            .then((response) =>{
+                for(var i=0;i<response.data.length;i++){
+                    showonscreen(response.data[i]);
+                }
+            })
+            .catch((err) =>{
+                console.log(err);
+            })
         })
 
 
